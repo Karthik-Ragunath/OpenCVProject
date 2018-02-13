@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 import array
 
-originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_75.jpg")
+#originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_75.jpg")
+originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/Hello_world_real.png")
 copiedImage = originalImage.copy()
 #print(copiedImage)
 numberOfRows = len(copiedImage)
@@ -26,7 +27,7 @@ cv2.imwrite('WhiteImage.jpg', newImageNumpyArrayWhite)
 cv2.imshow("White Image", newImageNumpyArrayWhite)
 
 fileData = []
-with open("/Users/karthik-5060/Documents/TensorFlow/img_10.txt", "r") as line:
+with open("/Users/karthik-5060/Documents/TensorFlow/Hello_world_real.txt", "r") as line:
     lines = line.read().splitlines()
     for currentLine in lines:
         commaSeparatedList = currentLine.split(',')
@@ -64,4 +65,18 @@ print(rightBottomY)
 print(leftBottomX)
 print(leftBottomY)
 '''
+
+minMaxY = []
+for i in range(numberOfWords):
+    minY = leftTopY[i]
+    if(rightTopY[i] < minY):
+        minY = rightTopY[i]
+    maxY = leftBottomY[i]
+    if(rightBottomY[i] > maxY):
+        maxY = rightBottomY[i]
+    minMaxY.append(minY)
+    minMaxY.append(maxY)
+
+print(minMaxY)
+        
         
