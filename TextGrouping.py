@@ -34,4 +34,34 @@ with open("/Users/karthik-5060/Documents/TensorFlow/img_10.txt", "r") as line:
 
 print(fileData)
 
+numberOfWords = len(fileData)
+leftTopX = []
+leftTopY = []
+rightTopX = []
+rightTopY = []
+rightBottomX = []
+rightBottomY = []
+leftBottomX = []
+leftBottomY = []
 
+for i in range(numberOfWords):
+    leftTopX.append(fileData[i][0])
+    leftTopY.append(fileData[i][1])
+    rightTopX.append(fileData[i][2])
+    rightTopY.append(fileData[i][3])
+    rightBottomX.append(fileData[i][4])
+    rightBottomY.append(fileData[i][5])
+    leftBottomX.append(fileData[i][6])
+    leftBottomY.append(fileData[i][7])
+
+'''
+print(leftTopX)
+print(leftTopY)
+print(rightTopX)
+print(rightTopY)
+print(rightBottomX)
+print(rightBottomY)
+print(leftBottomX)
+print(leftBottomY)
+'''
+        
