@@ -24,3 +24,12 @@ newImageNumpyArrayWhite = np.array(newImageListWhite)
 #print(newImageNumpyArrayWhite)
 cv2.imwrite('WhiteImage.jpg', newImageNumpyArrayWhite)
 cv2.imshow("White Image", newImageNumpyArrayWhite)
+
+fileData = []
+with open("/Users/karthik-5060/Documents/TensorFlow/img_10.txt", "r") as line:
+    lines = line.read().splitlines()
+    for currentLine in lines:
+        commaSeparatedList = currentLine.split(',')
+        fileData.append(commaSeparatedList)
+
+print(fileData) 
