@@ -32,4 +32,6 @@ with open("/Users/karthik-5060/Documents/TensorFlow/img_10.txt", "r") as line:
         commaSeparatedList = currentLine.split(',')
         fileData.append(commaSeparatedList)
 
-print(fileData) 
+print(fileData)
+
+
