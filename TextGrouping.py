@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
 import array
-
+'''
+import pytesseract
+from PIL import Image
+'''
 originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_2.jpg")
 #originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/Hello_world_real.png")
 copiedImage = originalImage.copy()
@@ -112,4 +115,12 @@ print(contours)
 cv2.drawContours(image,contours,-1,(0,255,0),3)
 cv2.imwrite('ContourImage.jpg', image)
 cv2.imshow("Contour Image", image)
-        
+
+#Using Tesseract as Cobvolutional Neural Network
+imageSubArrayValue = [[copiedImage[i][j] for j in range(int(leftTopX[0]), int(rightTopX[0]))] for i in range(int(leftTopY[0]), int(leftBottomY[0]))]
+imageSubArrayNumpy = np.array(imageSubArrayValue)
+cv2.imwrite("ImageSubArray.jpg", imageSubArrayNumpy)
+'''
+text = pytesseract.image_to_string(Image.open("ImageSubArray.jpg"))
+print(text)
+'''        
