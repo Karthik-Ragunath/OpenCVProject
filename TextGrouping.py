@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 import array
 
-#originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_75.jpg")
-originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/Hello_world_real.png")
+originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_2.jpg")
+#originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/Hello_world_real.png")
 copiedImage = originalImage.copy()
 #print(copiedImage)
 numberOfRows = len(copiedImage)
@@ -27,7 +27,8 @@ cv2.imwrite('WhiteImage.jpg', newImageNumpyArrayWhite)
 cv2.imshow("White Image", newImageNumpyArrayWhite)
 
 fileData = []
-with open("/Users/karthik-5060/Documents/TensorFlow/Hello_world_real.txt", "r") as line:
+#with open("/Users/karthik-5060/Documents/TensorFlow/Hello_world_real.txt", "r") as line:
+with open("/Users/karthik-5060/Documents/TensorFlow/img_2.txt", "r") as line:
     lines = line.read().splitlines()
     for currentLine in lines:
         commaSeparatedList = currentLine.split(',')
@@ -98,5 +99,17 @@ print(newImageNumpyArrayWhiteBlacked[minMaxY[0][0], :])
 '''
 cv2.imwrite('WhiteBlackImage.jpg', newImageNumpyArrayWhiteBlacked)
 cv2.imshow("White Black Image", newImageNumpyArrayWhiteBlacked)
-        
+
+whiteBlackImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/OpenCVProject/WhiteBlackImage.jpg")
+copiedWhiteBlackImage = whiteBlackImage.copy()
+newImageNumpyArrayWhiteBlackedImgGray = cv2.cvtColor(copiedWhiteBlackImage,cv2.COLOR_BGR2GRAY);
+ret, thresh = cv2.threshold(newImageNumpyArrayWhiteBlackedImgGray, 127, 255, 0)
+image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+numberOfContours = len(contours)
+print(numberOfContours)
+print(contours)
+cv2.drawContours(image,contours,-1,(0,255,0),3)
+cv2.imwrite('ContourImage.jpg', image)
+cv2.imshow("Contour Image", image)
         
