@@ -74,9 +74,29 @@ for i in range(numberOfWords):
     maxY = leftBottomY[i]
     if(rightBottomY[i] > maxY):
         maxY = rightBottomY[i]
-    minMaxY.append(minY)
-    minMaxY.append(maxY)
+    minYInt = int(minY)
+    maxYInt = int(maxY)
+    localMinMax = []
+    localMinMax.append(minYInt)
+    localMinMax.append(maxYInt)
+    minMaxY.append(localMinMax)
 
 print(minMaxY)
+
+newImageListWhiteBlacked = [[255 for x in range(len(numpyImageArray[0]))] for x in range(len(numpyImageArray))]
+for i in range(numberOfWords):
+    #newImageListWhiteBlacked = [[0 for x in range(minMaxY[i][0], minMaxY[i][1])] for x in range(len(numpyImageArray))]
+    #newImageListWhiteBlacked = [[0 for x in range(len(numpyImageArray[0]))] for x in range(minMaxY[i][0], minMaxY[i][1])]
+    for x in range(minMaxY[i][0], minMaxY[i][1]):
+        for y in range(len(numpyImageArray[0])):
+            newImageListWhiteBlacked[x][y] = 0
+
+newImageNumpyArrayWhiteBlacked = np.array(newImageListWhiteBlacked)
+'''
+print("Row Value Check")
+print(newImageNumpyArrayWhiteBlacked[minMaxY[0][0], :])
+'''
+cv2.imwrite('WhiteBlackImage.jpg', newImageNumpyArrayWhiteBlacked)
+cv2.imshow("White Black Image", newImageNumpyArrayWhiteBlacked)
         
         
