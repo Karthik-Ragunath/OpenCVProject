@@ -1,10 +1,9 @@
 import cv2
 import numpy as np
 import array
-'''
 import pytesseract
 from PIL import Image
-'''
+
 originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/img_2.jpg")
 #originalImage = cv2.imread("/Users/karthik-5060/Documents/GitHub/EAST/demo_images/Hello_world_real.png")
 copiedImage = originalImage.copy()
@@ -120,7 +119,9 @@ cv2.imshow("Contour Image", image)
 imageSubArrayValue = [[copiedImage[i][j] for j in range(int(leftTopX[0]), int(rightTopX[0]))] for i in range(int(leftTopY[0]), int(leftBottomY[0]))]
 imageSubArrayNumpy = np.array(imageSubArrayValue)
 cv2.imwrite("ImageSubArray.jpg", imageSubArrayNumpy)
-'''
-text = pytesseract.image_to_string(Image.open("ImageSubArray.jpg"))
+
+text = pytesseract.image_to_string(Image.open("ImageSubArray.jpg"), lang='eng', boxes=False, \
+        config='--psm 8')
+print(len(text))
 print(text)
-'''        
+#print("Hi all")
